@@ -1,0 +1,31 @@
+<!--Muestra la lista de los usuarios disponibles-->
+<div>
+<h1>PERSONAS</h1>
+<ul class="listas">
+  <li *ngFor="let lista of listas" (click)="onSelect(lista)">
+    <span class="badge"></span> {{lista.nombre}}
+  </li>
+</ul>
+</div>
+
+<!--Muestra los detalles del usuario seleccionado-->
+<div *ngIf="selectedPersona" [ngClass]="{'ocultar':show == false}">
+<hr>
+  <h2>{{selectedPersona.nombre | uppercase}} </h2>
+  <div><span>ID: </span>{{selectedPersona.id}}</div>
+  <div><span>: {{lista.nombre}}
+    <br>Apellido: {{lista.apellido}}
+    <br>Edad: {{lista.edad}}
+    <br>Sexo: {{lista.sexo}}</span><br></div>
+    <div>
+    <hr>
+    <label><h4>DATOS:</h4>
+    Nombre:<input [(ngModel)]="selectedPersona.nombre" placeholder="nombre"/><br>
+    Apellido:<input [(ngModel)]="selectedPersona.apellido" placeholder="apellido"/><br>
+    Edad:<input [(ngModel)]="selectedPersona.edad" placeholder="edad"/><br>
+    </label>
+  </div>
+</div>
+
+<hr><br>
+<button (click)="miEvento()"(click)=" show =! show"> ocultar  </button>
